@@ -103,7 +103,7 @@ This project is fully configured to run with Docker for consistent and isolated 
 Telegram-Bot/
 ├── Bot/                    # Main bot package
 │   ├── core/               # Core functionality
-│   ├── db/                 # SQLAlchemy database models
+│   ├── sql/                 # SQLAlchemy database models
 │   ├── mongo/              # MongoDB models
 │   ├── modules/            # Bot command modules
 │   ├── config.py           # Configuration settings
@@ -145,7 +145,7 @@ The SQLAlchemy database module provides:
 
 For more detailed information about the SQLAlchemy database structure and operations, see the [Database Documentation](Bot/db/README.md).
 
-### MongoDB (Async)
+### MongoDB
 
 The bot also supports MongoDB for NoSQL database operations using Motor AsyncIO for asynchronous operations. MongoDB integration is optional and will be enabled only if `MONGO_URI` is provided in the configuration.
 
