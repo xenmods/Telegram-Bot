@@ -1,5 +1,3 @@
-# Bot/sql/__init__.py (Async Version)
-
 import pkgutil
 import importlib
 from pathlib import Path
@@ -7,10 +5,6 @@ from Bot import LOGGER
 from Bot.config import Config
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
 from sqlalchemy.orm import declarative_base
-
-# You must install an async database driver, for example:
-# pip install aiosqlite (for SQLite)
-# pip install asyncpg (for PostgreSQL)
 
 # --- Dynamic Module Loading ---
 def _load_all_modules():
@@ -29,7 +23,6 @@ def _load_all_modules():
 BASE = declarative_base()
 
 # 2. Create the async engine.
-#    The DB_URI must specify an async driver (e.g., sqlite+aiosqlite or postgresql+asyncpg)
 engine = create_async_engine(Config.DB_URI)
 
 # 3. Create an async session factory
