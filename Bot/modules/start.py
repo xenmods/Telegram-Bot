@@ -1,5 +1,5 @@
 from Bot import bot
-from Bot.db.users import add_user, get_user
+from Bot.sql.users import add_user, get_user, get_all_users
 from Bot.core.decorators.tracking import track_user
 from Bot.core.decorators.error_handler import handle_errors
 from Bot.core.utils.formatting import format_user_mention
@@ -12,7 +12,7 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 @handle_errors
 async def start(_, message: Message):
     user = message.from_user
-    add_user(user.id, user.username, user.first_name, user.last_name)
+    await add_user(user.id, user.username, user.first_name, user.last_name)
     
     # Create welcome message with user info
     welcome_text = (
@@ -48,7 +48,7 @@ async def help(_, message: Message):
 @handle_errors
 async def info(_, message: Message):
     user = message.from_user
-    db_user = get_user(user.id)
+    db_user = await get_user(user.id)
     
     if not db_user:
         await message.reply_text("You are not registered in the database.")
@@ -74,9 +74,9 @@ async def info(_, message: Message):
 @track_user
 @handle_errors
 async def stats(_, message: Message):
-    from Bot.db.users import get_all_users
+
     
-    users = get_all_users()
+    users = await get_all_users()
     total_users = len(users)
     
     stats_text = (

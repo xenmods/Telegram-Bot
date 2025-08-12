@@ -1,6 +1,6 @@
 from Bot import bot, LOGGER
 from Bot.modules import *
-from Bot.db import *
+from Bot.sql import initialize_database
 from Bot.config import Config
 from pyrogram import idle
 import asyncio
@@ -8,6 +8,7 @@ import asyncio
 loop = asyncio.get_event_loop()
 
 async def main():
+    await initialize_database()
     LOGGER.info("Starting Bot...")
     await bot.start()
     LOGGER.info("Bot Started.")
