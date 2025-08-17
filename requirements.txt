@@ -9,3 +9,4 @@ tgcrypto
 python-dotenv
 watchdog
 typer
+httpx
